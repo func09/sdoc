@@ -228,6 +228,7 @@ class RDoc::Generator::SHtml
 			debug_msg "  working on %s (%s)" % [ klass.full_name, klass.path ]
 			outfile     = @outputdir + klass.path
 			rel_prefix  = @outputdir.relative_path_from( outfile.dirname )
+      charset     = @options.charset
       
 			debug_msg "  rendering #{outfile}"
 			self.render_template( templatefile, binding(), outfile )
@@ -243,6 +244,7 @@ class RDoc::Generator::SHtml
 			outfile     = @outputdir + file.path
 			debug_msg "  working on %s (%s)" % [ file.full_name, outfile ]
 			rel_prefix  = @outputdir.relative_path_from( outfile.dirname )
+      charset     = @options.charset
 
 			debug_msg "  rendering #{outfile}"
 			self.render_template( templatefile, binding(), outfile )
@@ -255,6 +257,7 @@ class RDoc::Generator::SHtml
     templatefile = @template_dir + 'index.rhtml'
     outfile      = @outputdir + 'index.html'
 	  index_path   = @files.first.path
+    charset     = @options.charset
 	  
 	  self.render_template( templatefile, binding(), outfile )
 	end
